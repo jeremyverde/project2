@@ -16,15 +16,17 @@
 #include <arpa/inet.h>
 using namespace std;
 
+struct stepStone {
+    string addr = "";
+    string port = "";
+};
 
-class awget {
-public:
-    awget(){ss = vector<stepStone>(0); ip = nullptr;port = nullptr;};
+int runTheGet(unsigned int index);
+
     void *get_in_addr(struct sockaddr *sa);
-    char *readFile(char * in);
+
+char *readFile(string in);
     /// structure for storing info from chain file
-    struct stepStone{string addr = "";string port = "";};
-    int runTheGet(unsigned int index, vector <stepStone>*ss);
     int startListen();
     // globals
     // stepping stone list
@@ -37,6 +39,16 @@ public:
     size_t MAXDATASIZE = 1024;
     vector <string> info;
     string sendStones;
+char *filename;
+
+class awget {
+public:
+    awget() {
+        ss = vector<stepStone>(0);
+        ip = nullptr;
+        port = nullptr;
+    };
+
 };
 
 

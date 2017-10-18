@@ -12,10 +12,11 @@ int usage()
     return -1;
 }
 
-int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
+int runTheGet(unsigned int index) {
     int next = rand() % index;
-    stepStone stone = ss->at(static_cast<unsigned long>(next));
-    ss->erase(ss->begin()+next);
+    stepStone stone = ss.at(static_cast<unsigned long>(next));
+    ss.erase(ss.begin() + next);
+    ss.resize(index - 1);
     cout << "next SS is " << stone.addr << ", " << stone.port << endl;
     cout << "waiting for file..." << endl;
     const char *PORTNUM = (stone.port).c_str();
@@ -32,12 +33,18 @@ int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
     bool empty = true;
     bool sendit = true;
     // output file
-    string file = "requested_page.html";
-    ofstream out(file);
+    int lastSlash = static_cast<int>(request.find_last_of('/'));
+    if (lastSlash < 0) {
+        filename = const_cast<char *>("index.html");
+    } else {
+        string temp = request.substr(static_cast<unsigned long>(lastSlash));
+        filename = const_cast<char *>(temp.c_str());
+    }
+    ofstream out(filename);
 
-    if (index != 1) empty = false;
+    if (index >= 1) empty = false;
     //build the list of stones to send, if neccessary
-    for (auto &s : *ss) {
+    for (auto &s : ss) {
         // add values to the string that will be sent to the stone later via buf
         sendStones.append(s.addr);
         sendStones.append(",");
@@ -119,6 +126,13 @@ int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
                 if(debug){
                     cout << "page: " << buf << endl;
                 }
+                // see if EOF has been sent, if so job is done
+                if (buf[MAXDATASIZE] == 0) {
+                    out << buf;
+                    //close(sok);
+                    cout << "Goodbye!" << endl;
+                    return 0;
+                }
                 out << buf;
             }
         }
@@ -139,6 +153,7 @@ int main(int argc, char **argv) {
     // check that there is at least one argument before proceeding
     if (argc <= 1) return usage();
     // print out the name of the requested page
+    request = argv[1];
     cout << "Request: " << argv[1] << endl;
     // code based on provided example at: https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html#Example-of-Getopt
     // loops while there are options ("-h", "-c") provided at cmd line, and assigns them to variables
@@ -188,10 +203,7 @@ int main(int argc, char **argv) {
     if (!(inNum >> index)){
         cerr << "File must begin with number of stepping stones" << endl;
     }
-    // awget object
-    awget a = awget();
-    a.request = argv[1];
-    a.ss.resize(index);
+    ss.resize(index);
     // temp variables to hold ss info
     string addr;
     string port;
@@ -208,9 +220,9 @@ int main(int argc, char **argv) {
             return -1;
         }
         // add empty object to list, then fill it in from file
-        a.ss.emplace_back(awget::stepStone());
-        a.ss.at(i).addr = addr;
-        a.ss.at(i).port = port;
+        ss.emplace_back(stepStone());
+        ss.at(i).addr = addr;
+        ss.at(i).port = port;
         if (istr0.fail() && !istr0.eof()) {
             cerr << "file not formatted correctly, exiting." << endl;
             return -1;
@@ -221,8 +233,15 @@ int main(int argc, char **argv) {
     }
     cout << "Chainlist is" << endl;
     for (unsigned int i = 0; i < index;i++){
-        cout << a.ss.at(i).addr << ", " << a.ss.at(i).port << endl;
+        cout << ss.at(i).addr << ", " << ss.at(i).port << endl;
     }
-    a.runTheGet(index,&a.ss);
+    if (runTheGet(index) == 0) {
+        cout << "received file " << request << endl;
+        string cmd = "xdg-open index.html.1";
+        if (system(cmd.c_str()) < 0) {
+            perror("could not delete file after use");
+            exit(5);
+        }
+    }
     return 0;
 }
