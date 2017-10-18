@@ -16,14 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b470aaf8-9b0e-4f2c-8451-f1be63a121c6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awget" afterPath="$PROJECT_DIR$/awget" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awget.o" afterPath="$PROJECT_DIR$/awget.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ss" afterPath="$PROJECT_DIR$/ss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ss.o" afterPath="$PROJECT_DIR$/ss.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awget.cpp" afterPath="$PROJECT_DIR$/awget.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awget.h" afterPath="$PROJECT_DIR$/awget.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ss.cpp" afterPath="$PROJECT_DIR$/ss.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -36,21 +30,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ss.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ss.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ss.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="379" column="36" lean-forward="false" selection-start-line="379" selection-start-column="36" selection-end-line="382" selection-end-column="39" />
+            <state relative-caret-position="581">
+              <caret line="455" column="22" lean-forward="true" selection-start-line="455" selection-start-column="22" selection-end-line="455" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="awget.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="awget.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/awget.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="219" column="22" lean-forward="true" selection-start-line="219" selection-start-column="22" selection-end-line="219" selection-end-column="22" />
+            <state relative-caret-position="121">
+              <caret line="228" column="22" lean-forward="true" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chain.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chain.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -60,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/awget.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+              <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
               <folding>
                 <element signature="e#108#126#0" expanded="true" />
               </folding>
@@ -94,8 +98,9 @@
         <option value="$PROJECT_DIR$/steppingStone/ss.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/awget.h" />
-        <option value="$PROJECT_DIR$/ss.cpp" />
         <option value="$PROJECT_DIR$/awget.cpp" />
+        <option value="$PROJECT_DIR$/chain.txt" />
+        <option value="$PROJECT_DIR$/ss.cpp" />
       </list>
     </option>
   </component>
@@ -197,7 +202,7 @@
       <workItem from="1508158652114" duration="7376000" />
       <workItem from="1508170746573" duration="10195000" />
       <workItem from="1508218815250" duration="1028000" />
-      <workItem from="1508282838721" duration="34282000" />
+      <workItem from="1508282838721" duration="36171000" />
     </task>
     <task id="LOCAL-00001" summary="correct header and source files, receives request and stone list, framework to handle going from there. No concurrency, no system calls.">
       <created>1508288222950</created>
@@ -227,14 +232,22 @@
       <option name="project" value="LOCAL" />
       <updated>1508302748747</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="step stones work, page is displayed, still some major kinks">
+      <created>1508320527126</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1508320527126</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71201000" />
+    <option name="totallyTimeSpent" value="73090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1667" y="-4" width="1853" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1876047" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -242,7 +255,7 @@
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33142036" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31698975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31698975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -267,7 +280,9 @@
     <MESSAGE value="correct header and source files, receives request and stone list, framework to handle going from there. No concurrency, no system calls." />
     <MESSAGE value="minor change, adds boolean to see if stone is sending or receiving" />
     <MESSAGE value="successfully retrieves a webpage now. Needs full step stone capability, and teardown." />
-    <option name="LAST_COMMIT_MESSAGE" value="successfully retrieves a webpage now. Needs full step stone capability, and teardown." />
+    <MESSAGE value="step stones work, page is displayed, still some major kinks" />
+    <option name="LAST_COMMIT_MESSAGE" value="step stones work, page is displayed, still some major kinks" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -279,7 +294,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ss.cpp</url>
-          <line>350</line>
+          <line>349</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
@@ -588,10 +603,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/awget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="228" column="22" lean-forward="true" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chain.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/awget.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
           <folding>
             <element signature="e#108#126#0" expanded="true" />
           </folding>
@@ -600,16 +631,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ss.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="379" column="36" lean-forward="false" selection-start-line="379" selection-start-column="36" selection-end-line="382" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/awget.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="219" column="22" lean-forward="true" selection-start-line="219" selection-start-column="22" selection-end-line="219" selection-end-column="22" />
+        <state relative-caret-position="581">
+          <caret line="455" column="22" lean-forward="true" selection-start-line="455" selection-start-column="22" selection-end-line="455" selection-end-column="22" />
           <folding />
         </state>
       </provider>

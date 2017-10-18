@@ -149,6 +149,7 @@ int main(int argc, char **argv) {
     char *arg = nullptr;
     unsigned int index;
     int c = 0;
+    int lastSlash = 0;
 
     // check that there is at least one argument before proceeding
     if (argc <= 1) return usage();
@@ -236,7 +237,14 @@ int main(int argc, char **argv) {
         cout << ss.at(i).addr << ", " << ss.at(i).port << endl;
     }
     if (runTheGet(index) == 0) {
-        cout << "received file " << request << endl;
+        lastSlash = static_cast<int>(request.find_last_of('/'));
+        if (lastSlash < 0) {
+            filename = const_cast<char *>("index.html");
+        } else {
+            string temp = request.substr(static_cast<unsigned long>(lastSlash));
+            filename = const_cast<char *>(temp.c_str());
+        }
+        cout << "received file " << filename << endl;
         string cmd = "xdg-open index.html.1";
         if (system(cmd.c_str()) < 0) {
             perror("could not delete file after use");

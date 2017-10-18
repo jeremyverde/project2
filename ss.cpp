@@ -1,4 +1,5 @@
 #include <cstring>
+#include <assert.h>
 #include "awget.h"
 
 using namespace std;
@@ -412,16 +413,44 @@ char *readFile(const string in) {
     return nullptr;
 }
 
+void GetPrimaryIp(char *buffer, size_t buflen) {
+    assert(buflen >= 16);
+
+    int sock = socket(AF_INET, SOCK_DGRAM, 0);
+    assert(sock != -1);
+
+    const char *kGoogleDnsIp = "8.8.8.8";
+    uint16_t kDnsPort = 53;
+    struct sockaddr_in serv;
+    memset(&serv, 0, sizeof(serv));
+    serv.sin_family = AF_INET;
+    serv.sin_addr.s_addr = inet_addr(kGoogleDnsIp);
+    serv.sin_port = htons(kDnsPort);
+
+    int err = connect(sock, (const sockaddr *) &serv, sizeof(serv));
+    assert(err != -1);
+
+    sockaddr_in name;
+    socklen_t namelen = sizeof(name);
+    err = getsockname(sock, (sockaddr *) &name, &namelen);
+    assert(err != -1);
+
+    const char *p = inet_ntop(AF_INET, &name.sin_addr, buffer, buflen);
+    assert(p);
+
+    close(sock);
+}
+
 int main(int argc, char **argv){
     int portArg = 0;
     char hostname[128];
     srand(static_cast<unsigned int>(time(nullptr)));
     gethostname(hostname,sizeof hostname);
     // hostname to ip code based off example at: http://www.cplusplus.com/forum/articles/9742/
-    hostent * record = gethostbyname(hostname);
-    auto * address = (in_addr * )record->h_addr;
-    ip = inet_ntoa(*address);
-
+    char buffer[128];
+    size_t buflen = 128;
+    GetPrimaryIp(buffer, buflen);
+    ip = buffer;
     if (argc == 1){
         port = "9001";
     } else{
