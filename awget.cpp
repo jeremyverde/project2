@@ -3,7 +3,7 @@
 using namespace std;
 
 // set for debugging output on/off
-bool debug = true;
+bool debug = false;
 
 /// Print the correct usage in case of user syntax error.
 int usage()
@@ -20,15 +20,20 @@ int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
     cout << "waiting for file..." << endl;
     const char *PORTNUM = (stone.port).c_str();
     const char *IP = (stone.addr).c_str();
-    // do more stuff
     int sok = 0;     // stone socket descriptor
     //struct sockaddr_storage remoteaddr{}; // client address
     char buf[MAXDATASIZE];
+    memset(buf,0,sizeof(buf));
+    ssize_t nbytes;
     string input;
     int yes=1;        // for setsockopt() SO_REUSEADDR, below
     int status;
     struct addrinfo hints{}, *ai;// will point to the results
     bool empty = true;
+    bool sendit = true;
+    // output file
+    string file = "requested_page.html";
+    ofstream out(file);
 
     if (index != 1) empty = false;
     //build the list of stones to send, if neccessary
@@ -69,32 +74,55 @@ int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
         dex++;
     }
     buf[dex++] = ',';
-    // if the stepping stone list isn't empty, add the stones to buf
-    if(!empty) {
-        for (unsigned long i = 0; i < sendStones.length(); i++) {
-            if (i == strlen(buf)) {
-                // send what you've got, empty buf, then keep going
-                if (debug) {
-                    cout << "buffer full, sending: " << buf << endl;
+    freeaddrinfo(ai); // all done with this
+
+    for(;;){
+        if(sendit) {
+            if (debug) {
+                cout << "sending: " << buf << endl;
+            }
+            // if the stepping stone list isn't empty, add the stones to buf
+            if(!empty) {
+                for (unsigned long i = 0; i < sendStones.length(); i++) {
+                    if (i == strlen(buf)) {
+                        // send what you've got, empty buf, then keep going
+                        if (debug) {
+                            cout << "buffer full, sending: " << buf << endl;
+                        }
+                        if (send(sok, buf, MAXDATASIZE, 0) == -1) {
+                            perror("send failed");
+                            exit(6);
+                        }
+                    }
+                    buf[i + dex] = sendStones[i];
                 }
-                if (send(sok, buf, MAXDATASIZE, 0) == -1) {
-                    perror("send failed");
+            }
+            if (send(sok, buf, strlen(buf), 0) == -1) {
+                perror("send failed");
+                exit(6);
+            }
+            sendit = false;
+        } else{
+            memset(buf,0,sizeof(buf));
+            if ((nbytes = recv(sok, buf, MAXDATASIZE, 0)) <= 0) {
+                // got error or connection closed by server
+                if (nbytes == 0) {
+                    // connection closed
+                    printf("socket disconnected\n");
+                    exit(5);
+                } else {
+                    perror("recv");
                     exit(6);
                 }
             }
-            buf[i + dex] = sendStones[i];
+            else{
+                if(debug){
+                    cout << "page: " << buf << endl;
+                }
+                out << buf;
+            }
         }
     }
-    if (debug){
-        cout << "sending: " << buf << endl;
-    }
-    if (send(sok, buf, strlen(buf), 0) == -1){
-        perror("send failed");
-        exit(6);
-    }
-    freeaddrinfo(ai); // all done with this
-
-    return 0;
 }
 
 int main(int argc, char **argv) {
