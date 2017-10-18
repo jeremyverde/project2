@@ -29,6 +29,7 @@ int awget::startListen() {
     socklen_t addr_size;
     struct sockaddr_storage their_addr{};
     int newfd;
+    bool send = false;
     //char req[MAXDATASIZE];
 
     if ((rv = getaddrinfo(ip, port, &hints, &servinfo)) != 0) {
@@ -100,6 +101,8 @@ int awget::startListen() {
                     if (debug){
                         cout << "last stone, getting page" << endl;
                     }
+                    // get the stuff, then get ready to send it back
+                    send = true;
                 } else{ // still more stones to step through, choose one and go
                     // number of stones in the list:
                     count = (count-1)/2;
