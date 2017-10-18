@@ -118,7 +118,6 @@ int main(int argc, char **argv){
     ss stone = ss();
     int portArg = 0;
     char hostname[128];
-    srand(time(NULL));
 
     gethostname(hostname,sizeof hostname);
     // hostname to ip code based off example at: http://www.cplusplus.com/forum/articles/9742/

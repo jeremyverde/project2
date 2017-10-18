@@ -1,24 +1,9 @@
-#include <iostream>
-#include <unistd.h>
-#include <sstream>
-#include <vector>
-#include <fstream>
-#include <sys/socket.h>
-#include <cstring>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <arpa/inet.h>
 #include "awget.h"
 
 using namespace std;
 
 // set for debugging output on/off
 bool debug = true;
-
-// constructor
-awget::awget(){
-    ss = vector<stepStone>(0);
-}
 
 /// Print the correct usage in case of user syntax error.
 int usage()
@@ -27,30 +12,33 @@ int usage()
     return -1;
 }
 
-void *awget::get_in_addr(struct sockaddr *sa) {
-    if (sa->sa_family == AF_INET) {
-        return &(((struct sockaddr_in*)sa)->sin_addr);
-    }
-
-    return &(((struct sockaddr_in6*)sa)->sin6_addr);
-}
-
-int awget::runTheGet(int index, vector <awget::stepStone> *ss) {
+int awget::runTheGet(unsigned int index, vector <awget::stepStone> *ss) {
     int next = rand() % index;
-    stepStone stone = ss->at(next);
+    stepStone stone = ss->at(static_cast<unsigned long>(next));
+    ss->erase(ss->begin()+next);
     cout << "next SS is " << stone.addr << ", " << stone.port << endl;
     cout << "waiting for file..." << endl;
     const char *PORTNUM = (stone.port).c_str();
     const char *IP = (stone.addr).c_str();
     // do more stuff
     int sok = 0;     // stone socket descriptor
-    struct sockaddr_storage remoteaddr{}; // client address
+    //struct sockaddr_storage remoteaddr{}; // client address
     char buf[MAXDATASIZE];
     string input;
     int yes=1;        // for setsockopt() SO_REUSEADDR, below
-
     int status;
-    struct addrinfo hints, *ai;// will point to the results
+    struct addrinfo hints{}, *ai;// will point to the results
+    bool empty = true;
+
+    if (index != 1) empty = false;
+    //build the list of stones to send, if neccessary
+    for (auto &s : *ss) {
+        // add values to the string that will be sent to the stone later via buf
+        sendStones.append(s.addr);
+        sendStones.append(",");
+        sendStones.append(s.port);
+        sendStones.append(",");
+    }
 
     memset(&hints, 0, sizeof hints); // make sure the struct is empty
     hints.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
@@ -76,23 +64,26 @@ int awget::runTheGet(int index, vector <awget::stepStone> *ss) {
     // where request ends, and stones start
     int dex = 0;
     // initially, buffer just contains the requested url
-    for (int i = 0;i < request.length();i++){
+    for (unsigned long i = 0;i < request.length();i++){
         buf[i] = request.at(i);
         dex++;
     }
     buf[dex++] = ',';
-    for (int i = 0;i < sendStones.length();i++){
-        if (i == strlen(buf)){
-            // send what you've got, empty buf, then keep going
-            if (debug){
-                cout << "buffer full, sending: " << buf << endl;
+    // if the stepping stone list isn't empty, add the stones to buf
+    if(!empty) {
+        for (unsigned long i = 0; i < sendStones.length(); i++) {
+            if (i == strlen(buf)) {
+                // send what you've got, empty buf, then keep going
+                if (debug) {
+                    cout << "buffer full, sending: " << buf << endl;
+                }
+                if (send(sok, buf, MAXDATASIZE, 0) == -1) {
+                    perror("send failed");
+                    exit(6);
+                }
             }
-            if (send(sok, buf, MAXDATASIZE, 0) == -1){
-                perror("send failed");
-                exit(6);
-            }
+            buf[i + dex] = sendStones[i];
         }
-        buf[i+dex] = sendStones[i];
     }
     if (debug){
         cout << "sending: " << buf << endl;
@@ -108,13 +99,13 @@ int awget::runTheGet(int index, vector <awget::stepStone> *ss) {
 
 int main(int argc, char **argv) {
     // seed random for later
-    srand(time(NULL));
+    srand(static_cast<unsigned int>(time(nullptr)));
     // local vars
     int cFlag = 0;
     int hFlag = 0;
     char *chainfile = nullptr;
     char *arg = nullptr;
-    int index;
+    unsigned int index;
     int c = 0;
 
     // check that there is at least one argument before proceeding
@@ -179,14 +170,9 @@ int main(int argc, char **argv) {
     int portNum;
     string delim = " ";
     // loop for designated number of stepping stones, add to list
-    for (int i = 0; i < index; i++){
+    for (unsigned int i = 0; i < index; i++){
         istr0 >> addr;
         istr0 >> port;
-        // add values to this string that will be sent to the stone later
-        a.sendStones.append(addr);
-        a.sendStones.append(",");
-        a.sendStones.append(port);
-        a.sendStones.append(",");
         // check that the port number is valid
         istringstream strm(port);
         if (!(strm >> portNum)){
@@ -197,18 +183,16 @@ int main(int argc, char **argv) {
         a.ss.emplace_back(awget::stepStone());
         a.ss.at(i).addr = addr;
         a.ss.at(i).port = port;
-        if (istr0.fail() && !istr0.eof()){
+        if (istr0.fail() && !istr0.eof()) {
             cerr << "file not formatted correctly, exiting." << endl;
             return -1;
-        } else if (istr0.eof()){
-            a.sendStones.pop_back();
         }
     }
     if (debug){
         cout << "Index: " << index << endl;
     }
     cout << "Chainlist is" << endl;
-    for (int i = 0; i < index;i++){
+    for (unsigned int i = 0; i < index;i++){
         cout << a.ss.at(i).addr << ", " << a.ss.at(i).port << endl;
     }
     a.runTheGet(index,&a.ss);

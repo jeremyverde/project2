@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/project2.dir/awget.cpp.o  -o project2 
+/usr/bin/c++  -g   CMakeFiles/project2.dir/awget.cpp.o CMakeFiles/project2.dir/ss.cpp.o  -o project2 

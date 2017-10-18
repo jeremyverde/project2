@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named project2
+# Target rules for targets named ss
 
 # Build rule for target.
-project2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 project2
-.PHONY : project2
+ss: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ss
+.PHONY : ss
 
 # fast build rule for target.
-project2/fast:
-	$(MAKE) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/build
-.PHONY : project2/fast
+ss/fast:
+	$(MAKE) -f CMakeFiles/ss.dir/build.make CMakeFiles/ss.dir/build
+.PHONY : ss/fast
+
+#=============================================================================
+# Target rules for targets named awget
+
+# Build rule for target.
+awget: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 awget
+.PHONY : awget
+
+# fast build rule for target.
+awget/fast:
+	$(MAKE) -f CMakeFiles/awget.dir/build.make CMakeFiles/awget.dir/build
+.PHONY : awget/fast
 
 awget.o: awget.cpp.o
 
@@ -129,7 +142,7 @@ awget.o: awget.cpp.o
 
 # target to build an object file
 awget.cpp.o:
-	$(MAKE) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/awget.cpp.o
+	$(MAKE) -f CMakeFiles/awget.dir/build.make CMakeFiles/awget.dir/awget.cpp.o
 .PHONY : awget.cpp.o
 
 awget.i: awget.cpp.i
@@ -138,7 +151,7 @@ awget.i: awget.cpp.i
 
 # target to preprocess a source file
 awget.cpp.i:
-	$(MAKE) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/awget.cpp.i
+	$(MAKE) -f CMakeFiles/awget.dir/build.make CMakeFiles/awget.dir/awget.cpp.i
 .PHONY : awget.cpp.i
 
 awget.s: awget.cpp.s
@@ -147,8 +160,35 @@ awget.s: awget.cpp.s
 
 # target to generate assembly for a file
 awget.cpp.s:
-	$(MAKE) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/awget.cpp.s
+	$(MAKE) -f CMakeFiles/awget.dir/build.make CMakeFiles/awget.dir/awget.cpp.s
 .PHONY : awget.cpp.s
+
+ss.o: ss.cpp.o
+
+.PHONY : ss.o
+
+# target to build an object file
+ss.cpp.o:
+	$(MAKE) -f CMakeFiles/ss.dir/build.make CMakeFiles/ss.dir/ss.cpp.o
+.PHONY : ss.cpp.o
+
+ss.i: ss.cpp.i
+
+.PHONY : ss.i
+
+# target to preprocess a source file
+ss.cpp.i:
+	$(MAKE) -f CMakeFiles/ss.dir/build.make CMakeFiles/ss.dir/ss.cpp.i
+.PHONY : ss.cpp.i
+
+ss.s: ss.cpp.s
+
+.PHONY : ss.s
+
+# target to generate assembly for a file
+ss.cpp.s:
+	$(MAKE) -f CMakeFiles/ss.dir/build.make CMakeFiles/ss.dir/ss.cpp.s
+.PHONY : ss.cpp.s
 
 # Help Target
 help:
@@ -158,10 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... project2"
+	@echo "... ss"
+	@echo "... awget"
 	@echo "... awget.o"
 	@echo "... awget.i"
 	@echo "... awget.s"
+	@echo "... ss.o"
+	@echo "... ss.i"
+	@echo "... ss.s"
 .PHONY : help
 
 

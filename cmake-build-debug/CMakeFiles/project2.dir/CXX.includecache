@@ -7,6 +7,12 @@
 #IncludeRegexTransform: 
 
 /home/jeremy/CS457/project2/awget.cpp
+awget.h
+/home/jeremy/CS457/project2/awget.h
+
+/home/jeremy/CS457/project2/awget.h
+cstring
+-
 iostream
 -
 unistd.h
@@ -17,18 +23,16 @@ vector
 -
 fstream
 -
-sys/socket.h
--
-cstring
--
 netinet/in.h
 -
 netdb.h
 -
 arpa/inet.h
 -
-awget.h
-/home/jeremy/CS457/project2/awget.h
 
+/home/jeremy/CS457/project2/ss.cpp
+cstring
+-
+awget.h
 /home/jeremy/CS457/project2/awget.h
 

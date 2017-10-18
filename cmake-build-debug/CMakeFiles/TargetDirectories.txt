@@ -1,3 +1,4 @@
 /home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/project2.dir
+/home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/ss.dir
+/home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/awget.dir

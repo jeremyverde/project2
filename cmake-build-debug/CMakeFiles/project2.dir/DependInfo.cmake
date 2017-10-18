@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jeremy/CS457/project2/awget.cpp" "/home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/project2.dir/awget.cpp.o"
+  "/home/jeremy/CS457/project2/ss.cpp" "/home/jeremy/CS457/project2/cmake-build-debug/CMakeFiles/project2.dir/ss.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project2.dir/awget.cpp.o"
+  "CMakeFiles/project2.dir/ss.cpp.o"
   "project2.pdb"
   "project2"
 )

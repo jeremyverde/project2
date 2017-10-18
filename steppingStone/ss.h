@@ -21,7 +21,7 @@ public:
     // ip address
     const char *ip;
     string request;
-    size_t MAXDATASIZE = 144;
+    size_t MAXDATASIZE = 1024;
     vector <string> info;
 };
 

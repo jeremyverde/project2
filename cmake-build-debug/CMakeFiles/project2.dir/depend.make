@@ -4,3 +4,6 @@
 CMakeFiles/project2.dir/awget.cpp.o: ../awget.cpp
 CMakeFiles/project2.dir/awget.cpp.o: ../awget.h
 
+CMakeFiles/project2.dir/ss.cpp.o: ../awget.h
+CMakeFiles/project2.dir/ss.cpp.o: ../ss.cpp
+
