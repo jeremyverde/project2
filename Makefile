@@ -18,4 +18,4 @@ ss.o: ss.cpp
 	$(CXX) -Wall $(INCLUDES) -c ss.cpp
 
 clean:
-	rm -f awget.o awget ss.o ss
+	rm -f awget.o awget ss.o ss index.*
