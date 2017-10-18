@@ -20,6 +20,8 @@ using namespace std;
 class awget {
 public:
     awget(){ss = vector<stepStone>(0); ip = nullptr;port = nullptr;};
+    void *get_in_addr(struct sockaddr *sa);
+    char *readFile(char * in);
     /// structure for storing info from chain file
     struct stepStone{string addr = "";string port = "";};
     int runTheGet(unsigned int index, vector <stepStone>*ss);
