@@ -33,18 +33,11 @@ int runTheGet(unsigned int index) {
     struct addrinfo hints{}, *ai;// will point to the results
     bool empty = true;
     bool sendit = true;
-    // output file
-    int lastSlash = static_cast<int>(request.find_last_of('/'));
-    if (lastSlash < 0) {
-        filename = const_cast<char *>("index.html");
-    } else {
-        string temp = request.substr(static_cast<unsigned long>(lastSlash));
-        filename = const_cast<char *>(temp.c_str());
-    }
+
     ofstream out(filename);
 
     if (index >= 1) empty = false;
-    //build the list of stones to send, if neccessary
+    //build the list of stones to send, if necessary
     for (auto &s : ss) {
         // add values to the string that will be sent to the stone later via buf
         sendStones.append(s.addr);
@@ -122,18 +115,21 @@ int runTheGet(unsigned int index) {
                     perror("recv");
                     exit(6);
                 }
-            }
-            else{
+            } else if (nbytes < MAXDATASIZE) {
+                // last of the data was sent
+                out << buf;
+                return 0;
+            } else{
                 if(debug){
                     cout << "page: " << buf << endl;
                 }
                 // see if EOF has been sent, if so job is done
-                if (buf[MAXDATASIZE] == 0) {
-                    out << buf;
-                    //close(sok);
-                    cout << "Goodbye!" << endl;
-                    return 0;
-                }
+                //if (buf[MAXDATASIZE-1] == 0) {
+                //   out << buf;
+                //close(sok);
+                //cout << "Goodbye!" << endl;
+                //    return 0;
+                //}
                 out << buf;
             }
         }
@@ -160,7 +156,7 @@ int main(int argc, char **argv) {
     cout << "Request: " << argv[1] << endl;
     // code based on provided example at: https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html#Example-of-Getopt
     // loops while there are options ("-h", "-c") provided at cmd line, and assigns them to variables
-    while ((c = getopt(argc, argv, "chd:")) != -1) {
+    while ((c = getopt(argc, argv, "c:")) != -1) {
         switch (c) {
             case 'h':
                 hFlag = 1;
@@ -219,6 +215,16 @@ int main(int argc, char **argv) {
     string port;
     int portNum;
     string delim = " ";
+
+    // create the eventual output file
+    lastSlash = static_cast<int>(request.find_last_of('/'));
+    if (lastSlash < 0) {
+        filename = const_cast<char *>("index.html");
+    } else {
+        string temp = request.substr(static_cast<unsigned long>(lastSlash));
+        filename = const_cast<char *>(temp.c_str());
+    }
+
     // loop for designated number of stepping stones, add to list
     for (unsigned int i = 0; i < index; i++){
         istr0 >> addr;
@@ -246,15 +252,9 @@ int main(int argc, char **argv) {
         cout << ss.at(i).addr << ", " << ss.at(i).port << endl;
     }
     if (runTheGet(index) == 0) {
-        lastSlash = static_cast<int>(request.find_last_of('/'));
-        if (lastSlash < 0) {
-            filename = const_cast<char *>("index.html");
-        } else {
-            string temp = request.substr(static_cast<unsigned long>(lastSlash));
-            filename = const_cast<char *>(temp.c_str());
-        }
         cout << "received file " << filename << endl;
-        string cmd = "xdg-open index.html.1";
+        string cmd = "xdg-open";
+        cmd.append(filename);
         if (display) {
             if (system(cmd.c_str()) < 0) {
                 perror("could not display page");
