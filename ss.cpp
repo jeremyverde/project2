@@ -309,16 +309,16 @@ int startListen() {
                                     char *file = readFile(filename);
                                         int filled = 0;
                                         unsigned int n = 0;
-                                        for (unsigned int j = 0;j < strlen(file);j++) {
-                                            // fix hardcoding of 1024, but ok for now
-                                            while(filled < 1024 && n!=strlen(file)){
-                                                buf[filled++] = file[n++];
-                                            }
-                                            if(send(i,buf,MAXDATASIZE,0) < 0){
+                                    for (n = 0; n < strlen(file); n) {
+                                        // fix hardcoding of 1024, but ok for now
+                                        while (filled < 1024 && n != strlen(file)) {
+                                            buf[filled++] = file[n++];
+                                        }
+                                        if (send(i, buf, MAXDATASIZE, 0) < 0) {
                                                 perror("transmission of webpage failed");
                                                 exit(3);
-                                            } else{
-                                                memset(buf,0,sizeof(buf));
+                                        } else {
+                                            memset(buf, 0, sizeof(buf));
                                                 filled = 0;
                                             }
                                         }
@@ -358,9 +358,8 @@ int startListen() {
                                     //bulletproofFName.append("");
                                     char *file = readFile(bulletproofFName);
                                     int filled = 0;
-                                    unsigned int n = 0;
                                     if (file != nullptr) {
-                                        for (unsigned int j = 0; j < strlen(file); j++) {
+                                        for (unsigned int n = 0; n < strlen(file); n) {
                                             // fix hardcoding of 1024, but ok for now
                                             while (filled < 1024 && n != strlen(file)) {
                                                 buf[filled++] = file[n++];
@@ -386,10 +385,10 @@ int startListen() {
                                     }
                                     string cmd = "rm ";
                                     cmd.append(bulletproofFName); // hardcoded for now
-                                    /*if(system(cmd.c_str()) < 0){
+                                    if (system(cmd.c_str()) < 0) {
                                         perror("could not delete file after use");
                                         exit(5);
-                                    }*/
+                                    }
                                     cout << "Goodbye!" << endl;
                                 }
                             }
