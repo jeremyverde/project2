@@ -109,7 +109,7 @@ int runTheGet(unsigned int index) {
                 // got error or connection closed by server
                 if (nbytes == 0) {
                     // connection closed
-                    printf("socket disconnected\n");
+                    //printf("socket disconnected\n");
                     return 0;
                 } else {
                     perror("recv");
