@@ -42,3 +42,5 @@ run the make file in the code directory (containing makefile, ss.cpp, awget.cpp,
 - Large portions of the actual socket connection functions were based heavily on the examples provided at: http://beej.us/guide/bgnet/
 - readFile() was based heavily on the example given at:  http://www.cplusplus.com/doc/tutorial/files/
 - the option parsing code was based on the example given in the class resources
+
+The source files for this program, as well as documentation, can be found at: https://github.com/jeremyverde/project2
