@@ -15,9 +15,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b470aaf8-9b0e-4f2c-8451-f1be63a121c6" name="Default" comment="">
+    <list default="true" id="b470aaf8-9b0e-4f2c-8451-f1be63a121c6" name="Default" comment="ss sends smartly now">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awget.cpp" afterPath="$PROJECT_DIR$/awget.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ss.cpp" afterPath="$PROJECT_DIR$/ss.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,21 +30,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ss.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ss.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ss.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="376" column="68" lean-forward="false" selection-start-line="376" selection-start-column="68" selection-end-line="376" selection-end-column="68" />
+            <state relative-caret-position="142">
+              <caret line="361" column="58" lean-forward="false" selection-start-line="361" selection-start-column="58" selection-end-line="361" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="awget.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="awget.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/awget.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="112" column="29" lean-forward="false" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+            <state relative-caret-position="193">
+              <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -52,8 +53,8 @@
       <file leaf-file-name="chain.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chain.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+            <state relative-caret-position="38">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -97,9 +98,9 @@
         <option value="$PROJECT_DIR$/steppingStone/ss.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/awget.h" />
-        <option value="$PROJECT_DIR$/ss.cpp" />
-        <option value="$PROJECT_DIR$/chain.txt" />
         <option value="$PROJECT_DIR$/awget.cpp" />
+        <option value="$PROJECT_DIR$/chain.txt" />
+        <option value="$PROJECT_DIR$/ss.cpp" />
       </list>
     </option>
   </component>
@@ -204,7 +205,7 @@
       <workItem from="1508282838721" duration="36511000" />
       <workItem from="1508357514549" duration="203000" />
       <workItem from="1508525869996" duration="1487000" />
-      <workItem from="1508695463484" duration="8447000" />
+      <workItem from="1508695463484" duration="10625000" />
     </task>
     <task id="LOCAL-00001" summary="correct header and source files, receives request and stone list, framework to handle going from there. No concurrency, no system calls.">
       <created>1508288222950</created>
@@ -262,11 +263,39 @@
       <option name="project" value="LOCAL" />
       <updated>1508701673446</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="awget receives full file now">
+      <created>1508706907768</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1508706907768</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ss sends smartly now">
+      <created>1508707504509</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1508707504509</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ss sends smartly now">
+      <created>1508708112632</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1508708112632</updated>
+    </task>
+    <task id="LOCAL-00012" summary="might fix intermediate relays">
+      <created>1508708438893</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1508708438893</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83567000" />
+    <option name="totallyTimeSpent" value="85745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1667" y="-4" width="1533" height="904" extended-state="6" />
@@ -300,12 +329,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="correct header and source files, receives request and stone list, framework to handle going from there. No concurrency, no system calls." />
     <MESSAGE value="minor change, adds boolean to see if stone is sending or receiving" />
     <MESSAGE value="successfully retrieves a webpage now. Needs full step stone capability, and teardown." />
     <MESSAGE value="step stones work, page is displayed, still some major kinks" />
     <MESSAGE value="returns network address now for ss" />
-    <option name="LAST_COMMIT_MESSAGE" value="returns network address now for ss" />
+    <MESSAGE value="awget receives full file now" />
+    <MESSAGE value="ss sends smartly now" />
+    <MESSAGE value="might fix intermediate relays" />
+    <option name="LAST_COMMIT_MESSAGE" value="might fix intermediate relays" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -320,11 +353,6 @@
           <url>file://$PROJECT_DIR$/awget.cpp</url>
           <line>119</line>
           <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/ss.cpp</url>
-          <line>376</line>
-          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="38" />
@@ -653,26 +681,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/awget.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chain.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ss.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="376" column="68" lean-forward="false" selection-start-line="376" selection-start-column="68" selection-end-line="376" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/awget.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="112" column="29" lean-forward="false" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+        <state relative-caret-position="142">
+          <caret line="361" column="58" lean-forward="false" selection-start-line="361" selection-start-column="58" selection-end-line="361" selection-end-column="58" />
           <folding />
         </state>
       </provider>

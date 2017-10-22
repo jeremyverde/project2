@@ -307,8 +307,8 @@ int startListen() {
                                     }
                                 } else{
                                     char *file = readFile(filename);
-                                        int filled = 0;
-                                        unsigned int n = 0;
+                                    int filled = 0;
+                                    unsigned int n = 0;
                                     for (n = 0; n < strlen(file); n) {
                                         // fix hardcoding of 1024, but ok for now
                                         while (filled < 1024 && n != strlen(file)) {
@@ -364,13 +364,13 @@ int startListen() {
                                             while (filled < 1024 && n != strlen(file)) {
                                                 buf[filled++] = file[n++];
                                             }
-                                                if (send(i, buf, MAXDATASIZE, 0) < 0) {
-                                                    perror("transmission of webpage failed");
-                                                    exit(3);
-                                                } else {
-                                                    memset(buf, 0, sizeof(buf));
-                                                    filled = 0;
-                                                }
+                                            if (send(i, buf, MAXDATASIZE, 0) < 0) {
+                                                perror("transmission of webpage failed");
+                                                exit(3);
+                                            } else {
+                                                memset(buf, 0, sizeof(buf));
+                                                filled = 0;
+                                            }
                                         }
                                     }
                                     string cmd = "rm ";
