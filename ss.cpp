@@ -355,7 +355,7 @@ int startListen() {
                                     }
                                 } else {
                                     string bulletproofFName = filename;
-                                    bulletproofFName.append("");
+                                    //bulletproofFName.append("");
                                     char *file = readFile(bulletproofFName);
                                     int filled = 0;
                                     unsigned int n = 0;
@@ -365,12 +365,22 @@ int startListen() {
                                             while (filled < 1024 && n != strlen(file)) {
                                                 buf[filled++] = file[n++];
                                             }
-                                            if (send(i, buf, MAXDATASIZE, 0) < 0) {
-                                                perror("transmission of webpage failed");
-                                                exit(3);
+                                            if (n != strlen(file)) {
+                                                if (send(i, buf, MAXDATASIZE, 0) < 0) {
+                                                    perror("transmission of webpage failed");
+                                                    exit(3);
+                                                } else {
+                                                    memset(buf, 0, sizeof(buf));
+                                                    filled = 0;
+                                                }
                                             } else {
-                                                memset(buf, 0, sizeof(buf));
-                                                filled = 0;
+                                                if (send(i, buf, static_cast<size_t>(filled), 0) < 0) {
+                                                    perror("transmission of webpage failed");
+                                                    exit(3);
+                                                } else {
+                                                    memset(buf, 0, sizeof(buf));
+                                                    filled = 0;
+                                                }
                                             }
                                         }
                                     }
