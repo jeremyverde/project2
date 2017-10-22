@@ -138,12 +138,6 @@ int runTheGet(unsigned int index) {
                 if (debug) {
                     cout << "page: " << buf << endl;
                 }
-                // see if EOF has been sent, if so job is done
-                if (buf[MAXDATASIZE] == 0) {
-                    out << buf;
-                    //close(sok);
-                    return 0;
-                }
                 out << buf;
             }
         }
