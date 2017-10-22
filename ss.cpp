@@ -324,10 +324,10 @@ int startListen() {
                                         }
                                     cmd = "rm ";
                                     cmd.append(filename); // hardcoded for now
-                                    /*if(system(cmd.c_str()) < 0){
+                                    if (system(cmd.c_str()) < 0) {
                                         perror("could not delete file after use");
                                         exit(5);
-                                    }*/
+                                    }
                                     cout << "Goodbye!" << endl;
                                 }
 
@@ -413,6 +413,7 @@ char *readFile(const string in) {
     return nullptr;
 }
 
+// based on example at: https://stackoverflow.com/questions/212528/get-the-ip-address-of-the-machine
 void GetPrimaryIp(char *buffer, size_t buflen) {
     assert(buflen >= 16);
 
