@@ -110,15 +110,15 @@ int runTheGet(unsigned int index) {
                 if (nbytes == 0) {
                     // connection closed
                     printf("socket disconnected\n");
-                    exit(5);
+                    return 0;
                 } else {
                     perror("recv");
                     exit(6);
                 }
-            } else if (nbytes < MAXDATASIZE) {
-                // last of the data was sent
-                out << buf;
-                return 0;
+//            } else if (nbytes < MAXDATASIZE) {
+//                // last of the data was sent
+//                out << buf;
+//                return 0;
             } else{
                 if(debug){
                     cout << "page: " << buf << endl;
@@ -253,7 +253,7 @@ int main(int argc, char **argv) {
     }
     if (runTheGet(index) == 0) {
         cout << "received file " << filename << endl;
-        string cmd = "xdg-open";
+        string cmd = "xdg-open ";
         cmd.append(filename);
         if (display) {
             if (system(cmd.c_str()) < 0) {
