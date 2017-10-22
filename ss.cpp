@@ -322,6 +322,7 @@ int startListen() {
                                         perror("could not delete file after use");
                                         exit(5);
                                     }
+                                    memset(buf, 0, sizeof(buf));
                                     cout << "Goodbye!" << endl;
                                 }
 
@@ -373,6 +374,7 @@ int startListen() {
                                         perror("could not delete file after use");
                                         exit(5);
                                     }
+                                    memset(buf, 0, sizeof(buf));
                                     cout << "Goodbye!" << endl;
                                 }
                             }
