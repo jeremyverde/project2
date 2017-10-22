@@ -4,6 +4,7 @@ using namespace std;
 
 // set for debugging output on/off
 bool debug = false;
+bool display = false;
 
 /// Print the correct usage in case of user syntax error.
 int usage()
@@ -145,6 +146,7 @@ int main(int argc, char **argv) {
     // local vars
     int cFlag = 0;
     int hFlag = 0;
+    int dFlag = 0;
     char *chainfile = nullptr;
     char *arg = nullptr;
     unsigned int index;
@@ -158,10 +160,13 @@ int main(int argc, char **argv) {
     cout << "Request: " << argv[1] << endl;
     // code based on provided example at: https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html#Example-of-Getopt
     // loops while there are options ("-h", "-c") provided at cmd line, and assigns them to variables
-    while ((c = getopt (argc, argv, "c:")) != -1) {
+    while ((c = getopt(argc, argv, "chd:")) != -1) {
         switch (c) {
             case 'h':
                 hFlag = 1;
+                break;
+            case 'd':
+                dFlag = 1;
                 break;
             case 'c':
                 cFlag = 1;
@@ -184,6 +189,10 @@ int main(int argc, char **argv) {
     }
     if (hFlag){
         return usage();
+    }
+
+    if (dFlag) {
+        display = true;
     }
 
     if (cFlag){
@@ -246,9 +255,11 @@ int main(int argc, char **argv) {
         }
         cout << "received file " << filename << endl;
         string cmd = "xdg-open index.html.1";
-        if (system(cmd.c_str()) < 0) {
-            perror("could not delete file after use");
-            exit(5);
+        if (display) {
+            if (system(cmd.c_str()) < 0) {
+                perror("could not display page");
+                exit(5);
+            }
         }
     }
     return 0;
