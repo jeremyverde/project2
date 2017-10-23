@@ -156,7 +156,7 @@ int main(int argc, char **argv) {
     cout << "Request: " << argv[1] << endl;
     // code based on provided example at: https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html#Example-of-Getopt
     // loops while there are options ("-h", "-c") provided at cmd line, and assigns them to variables
-    while ((c = getopt(argc, argv, "c:")) != -1) {
+    while ((c = getopt(argc, argv, "hdc:")) != -1) {
         switch (c) {
             case 'h':
                 hFlag = 1;
