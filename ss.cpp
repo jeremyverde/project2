@@ -285,7 +285,8 @@ int startListen() {
                             cout << "request: " << request << endl;
                             // no step stones sent, run the wget and send back
                             if (count == 1) {
-
+                                if (!ss.empty())
+                                    ss.clear();
                                 cout << "chainlist is empty" << endl;
                                 // run wget on the requested page
                                 cout << "issuing wget for file " << filename << endl;
@@ -329,8 +330,6 @@ int startListen() {
                                         exit(5);
                                     }
                                     memset(buf, 0, sizeof(buf));
-                                    if (!ss.empty())
-                                        ss.clear();
                                     cout << "Goodbye!" << endl;
                                 }
 
@@ -347,7 +346,6 @@ int startListen() {
                                 for (auto &s : ss) {
                                     cout << s.addr << ", " << s.port << endl;
                                 }
-
                                 runTheGet(count);
                                 cout << "relaying file" << endl;
                                 memset(buf, 0, sizeof(buf));
