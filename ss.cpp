@@ -325,8 +325,6 @@ int startListen() {
                                     memset(buf, 0, sizeof(buf));
                                     if (!ss.empty())
                                         ss.clear();
-                                    if (!info.empty())
-                                        info.clear();
                                     cout << "Goodbye!" << endl;
                                 }
 
@@ -381,8 +379,6 @@ int startListen() {
                                     memset(buf, 0, sizeof(buf));
                                     if (!ss.empty())
                                         ss.clear();
-                                    if (!info.empty())
-                                        info.clear();
                                     cout << "Goodbye!" << endl;
                                 }
                             }
