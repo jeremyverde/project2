@@ -20,7 +20,7 @@ run the make file in the code directory (containing makefile, ss.cpp, awget.cpp,
   - $./awget [requested url] [-c {chainfile}] [-d]
   - the name of the requested webpage must be included
   - the name of the chainfile is optional
-    -default is "chaingaing.txt"
+    - default is "chaingaing.txt"
   - the d option is used to display the page after successfully receiving it. Not including this will save the page, but it will not be displayed in the browser.  
   
 - chainfile format:
