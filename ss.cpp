@@ -123,6 +123,10 @@ int runTheGet(unsigned int index) {
             sendit = false;
         } else {
             memset(buf, 0, sizeof(buf));
+            if (!sendStones.empty())
+                sendStones.clear();
+            if (!ss.empty())
+                ss.clear();
             if ((nbytes = recv(sok, buf, MAXDATASIZE, 0)) <= 0) {
                 // got error or connection closed by server
                 if (nbytes == 0) {
