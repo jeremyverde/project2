@@ -323,6 +323,10 @@ int startListen() {
                                         exit(5);
                                     }
                                     memset(buf, 0, sizeof(buf));
+                                    if (!ss.empty())
+                                        ss.clear();
+                                    if (!info.empty())
+                                        info.clear();
                                     cout << "Goodbye!" << endl;
                                 }
 
