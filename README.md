@@ -37,6 +37,12 @@ run the make file in the code directory (containing makefile, ss.cpp, awget.cpp,
   - For example: 
     - if machine 1 requests: www.google.com and machine 2 requests: www.reddit.com
     - the program defaults the requested page output file to "index.html" for both of these sites, which causes issues.
+- Memory
+  - I haven't had time to ensure that all memory blocks are adequetly freed after use, therefore I would imagine that mutiple 
+  runs (greater than 10) would begin to create issues. Therefore, I would recommend restarting the ss nodes every 10 runs or 
+  so to ensure proper performance.
+- Imperfect relays
+  - Adding more nodes creates minor, yet noticeable defects in the webpages. Characters and elements are seemingly lost in translation, and therefore do not display perfectly when rendered on the awget node. The issue is compounded as more nodes are added, therefore I would assume that greater than 10 nodes would cause noticeable degradation in quality. It's a scalability issue that I just didn't have time to adress properly. 
     
 ## References and Documentation
 - Large portions of the actual socket connection functions were based heavily on the examples provided at: http://beej.us/guide/bgnet/
