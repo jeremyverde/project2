@@ -280,6 +280,7 @@ int startListen() {
                             cout << "request: " << request << endl;
                             // no step stones sent, run the wget and send back
                             if (count == 1) {
+                                count = 0;
                                 cout << "chainlist is empty" << endl;
                                 // run wget on the requested page
                                 cout << "issuing wget for file " << filename << endl;
